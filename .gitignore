@@ -1,3 +1,13 @@
 electron/release/
 electron/release/
 electron/release/
+node_modules/
+server/node_modules/
+client/node_modules/
+
+electron/release/
+electron/dist/
+electron/win-unpacked/
+electron/*.exe
+**/*.exe
+**/*.asar
