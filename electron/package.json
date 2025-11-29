@@ -1,0 +1,42 @@
+{
+  "name": "nim-game-desktop",
+  "version": "1.0.0",
+  "description": "Trò chơi NIM - Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^39.2.3",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3"
+  },
+  "build": {
+    "appId": "com.nimgame.desktop",
+    "productName": "Trò Chơi NIM",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "server/**/*",
+      "dist/**/*",
+      ".env"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "dist/favicon.ico"
+    }
+  }
+}
