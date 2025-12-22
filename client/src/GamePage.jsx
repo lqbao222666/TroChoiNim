@@ -14,7 +14,13 @@ function GamePage() {
   const [game, setGame] = useState(null);
   const [error, setError] = useState(null);
   const [showStartScreen, setShowStartScreen] = useState(!id);
+  const [selectedHeap, setSelectedHeap] = useState(null);
+  const [selectedStones, setSelectedStones] = useState(0);
 
+  const handleSelectMove = (heapIndex, stones) => {
+    setSelectedHeap(heapIndex);
+    setSelectedStones(stones);
+  };
   useEffect(() => {
     if (id) fetchGame(id);
   }, [id]);
@@ -88,13 +94,26 @@ function GamePage() {
   // Giao diện chơi
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 via-gray-50 to-gray-100 p-6">
-      <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl p-8 flex flex-col items-center space-y-6">
+      <div className="w-full max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl p-8 flex flex-col items-center space-y-8">
+        {" "}
         <GameHeader error={error} />
         {game && (
           <>
-            <HeapDisplay heaps={game.heaps} />
+            <HeapDisplay
+              heaps={game.heaps}
+              onSelectMove={handleSelectMove}
+              selectedHeap={selectedHeap}
+              selectedStones={selectedStones}
+            />
             <GameStatus game={game} />
-            <MoveSelector game={game} onMove={handleMove} />
+            <MoveSelector
+              game={game}
+              onMove={handleMove}
+              selectedHeap={selectedHeap}
+              selectedStones={selectedStones}
+              setSelectedHeap={setSelectedHeap}
+              setSelectedStones={setSelectedStones}
+            />{" "}
           </>
         )}
         <GameControls

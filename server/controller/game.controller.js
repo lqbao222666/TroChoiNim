@@ -29,7 +29,7 @@ const generateRandomGame = (req, res) => {
     mode,
     status: "ongoing",
     winner: null,
-    user_id: req.body.user_id || null, // Optional: Thêm nếu có user đăng nhập
+    user_id: req.body.user_id || null,
   };
 
   gameService.createGame(gameData, (err, result) => {
